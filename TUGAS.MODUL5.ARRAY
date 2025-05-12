@@ -1,0 +1,52 @@
+banyak_mahasiswa = int(input("Jumlah mahasiswa yang mengikuti praktikum ADP = "))
+
+nama_mahasiswa = []
+nilai_akhir = []
+
+for i in range(banyak_mahasiswa):
+    nama = input("Nama mahasiswa : ")
+    preetest = float(input("Nilai preetest = "))
+    postest  = float(input("Nilai posttest = "))
+    makalah = float(input("Nilai makalah = "))
+    print(' ')
+
+    hasil_akhir = preetest * 0.4 + postest * 0.4 + makalah * 0.2
+
+    nama_mahasiswa.append(nama)
+    nilai_akhir.append(hasil_akhir)
+
+print("\nNama Mahasiswa       Nilai Akhir")
+print("-" * 32)
+for i in range(banyak_mahasiswa):
+    print(f"{nama_mahasiswa[i]:22} | {nilai_akhir[i]:.2f}")
+print("-" * 32)
+
+total = 0
+for nilai in nilai_akhir:
+    total += nilai
+
+rata = total / banyak_mahasiswa
+
+print(f"\nRata-rata nilai akhir: {rata:.2f}")
+
+maks = nilai_akhir[0]
+minim = nilai_akhir[0]
+
+for nilai in nilai_akhir:
+    if nilai > maks:
+        maks = nilai
+    if nilai < minim:
+        minim = nilai
+
+print("Mahasiswa dengan nilai tertinggi")
+for i in range(banyak_mahasiswa):
+    if nilai_akhir[i] == maks:
+        print(f"- {nama_mahasiswa[i]} {maks:.2f}")
+    if nilai_akhir[i] == minim:
+        print("\nMahasiswa dengan nilai terendah:")
+        print(f"-{nama_mahasiswa[i]} {minim:.2f}")
+
+print("\nMahasiswa dengan nilai di atas rata-rata:")
+for i in range(banyak_mahasiswa):
+    if nilai_akhir[i] > rata:
+        print(f"{nama_mahasiswa[i]} {nilai_akhir[i]:.2f}")
