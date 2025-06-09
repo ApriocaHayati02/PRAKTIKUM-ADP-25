@@ -1,0 +1,36 @@
+import os
+import time
+from termcolor import cprint
+
+def clear_screen():
+    os.system('cls')
+
+def show_logo():
+    logo = """
+------------------------
+| ~    OCA`s GAME    ~ |
+|   !  ^^^^^^^^^^ !    |
+| @     (\___/)      @ |
+|       (=O.O=)/>      |
+|   !    ^^^^^/    !   |
+------------------------"""
+    cprint(logo, 'white','on_blue')
+
+def loading_animation(duration=5):
+    loading_text = "\tmenunggu"
+    simbol = ["", ".", "..", "..."]
+    
+    start_time = time.time()
+    while time.time() - start_time < duration:
+        for i in simbol:
+            clear_screen()
+            show_logo()
+            cprint("\n" + loading_text + i, 'white')
+            time.sleep(2)
+
+clear_screen()
+show_logo()
+loading_animation(5)
+clear_screen()
+show_logo()
+cprint("\t P L A Y ","white","on_yellow")
